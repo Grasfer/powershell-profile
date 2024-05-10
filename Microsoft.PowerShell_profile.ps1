@@ -23,7 +23,7 @@ function Update-Profile {
     }
 
     try {
-        $url = "https://raw.githubusercontent.com/ChrisTitusTech/powershell-profile/main/Microsoft.PowerShell_profile.ps1"
+        $url = "https://raw.githubusercontent.com/Grasfer/powershell-profile/main/Microsoft.PowerShell_profile.ps1"
         $oldhash = Get-FileHash $PROFILE
         Invoke-RestMethod $url -OutFile "$env:temp/Microsoft.PowerShell_profile.ps1"
         $newhash = Get-FileHash "$env:temp/Microsoft.PowerShell_profile.ps1"
@@ -142,11 +142,11 @@ function hb {
         return
     }
     
-    $uri = "http://bin.christitus.com/documents"
+    $uri = "https://hb.grasfer.com/documents"
     try {
         $response = Invoke-RestMethod -Uri $uri -Method Post -Body $Content -ErrorAction Stop
         $hasteKey = $response.key
-        $url = "http://bin.christitus.com/$hasteKey"
+        $url = "https://hb.grasfer.com/$hasteKey"
         Write-Output $url
     } catch {
         Write-Error "Failed to upload the document. Error: $_"
